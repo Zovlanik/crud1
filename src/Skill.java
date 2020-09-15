@@ -1,11 +1,16 @@
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-
 class Skill {
     private Long id;
     private String name;
 
+    Skill(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public String toString(){
+
+        return "[" + id + " = " + name + "]";
+    }
 
 }
 
