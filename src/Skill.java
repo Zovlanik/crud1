@@ -2,7 +2,23 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class Skill {
+class Skill {
+    private Long id;
+    private String name;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/*
     public void create(String name){
         File file = new File(name);
         try {
@@ -43,5 +59,4 @@ public class Skill {
         }catch(Exception e){}
     }
 
-
-}
+*/
