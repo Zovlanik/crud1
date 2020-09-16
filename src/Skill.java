@@ -1,15 +1,19 @@
 class Skill {
     long id;
-    private String name;
+    String name;
 
     Skill(long id, String name){
         this.id = id;
         this.name = name;
     }
+    Skill(String name){
+
+        this.name = name;
+    }
 
     public String toString(){
 
-        return id + "=" + name;
+        return id + "," + name;
     }
 
 }

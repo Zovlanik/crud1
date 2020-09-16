@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkillRepository {
-    void create(String skillName){
+    void create(Skill skillName){
         List <Skill> ls = getAll();
         long size = ls.size();
         try (FileWriter writer = new FileWriter("Skill.txt",true)){
-            writer.write((size+1) + "," + skillName + "\n");
+            writer.write((size+1) + "," + skillName.name + "\n");
 
 
         } catch (IOException e) {
@@ -19,8 +19,22 @@ public class SkillRepository {
 
     }
 
-    Skill update (Skill skill){
-        return skill;
+    void update (Skill skill){
+        List<Skill> listSkill = getAll();
+        try (FileWriter writer = new FileWriter("Skill.txt")){
+            for(Skill sk : listSkill){
+                if(sk.id != skill.id) {
+                    writer.write(sk.toString() + "\n");
+
+                } else {
+                    writer.write(skill.id + "," + skill.name + "\n");
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     Skill getById(Long id){
@@ -29,7 +43,7 @@ public class SkillRepository {
         try (FileReader reader = new FileReader("Skill.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
-            while(line != null){
+            while(line != null && line.length() > 1){
                 temp = Long.parseLong(line.substring(0,line.indexOf(',')));
                 if(temp == id){
                     skill = new Skill(temp,line.substring(line.indexOf(',')+1));
@@ -49,7 +63,7 @@ public class SkillRepository {
         try (FileReader reader = new FileReader("Skill.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
-            while(line != null){
+            while(line != null && line.length() > 1){
                 Skill tempSkill = new Skill(Long.parseLong(line.substring(0,line.indexOf(','))),line.substring(line.indexOf(',')+1));
                 ls.add(tempSkill);
                 line = buffReader.readLine();

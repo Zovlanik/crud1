@@ -9,11 +9,15 @@ public class Main {
         System.out.println(repo.getById(4L));
 
 
-//        repo.deleteById(4L);
-
-        repo.create("Lisp");
+        // создадим новый скилл
+        Skill sk = new Skill("temp");
+        repo.create(sk);
         System.out.println(repo.getAll());
 
+//        // обновим название скилла
+//        Skill sk2 = new Skill(9L, "Абракадабра");
+//        repo.update(sk2);
+//        System.out.println(repo.getAll());
 
     }
 }
