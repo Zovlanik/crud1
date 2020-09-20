@@ -37,7 +37,7 @@ public class SkillRepository {
 
     }
 
-    Skill getById(Long id){
+    static Skill getById(Long id){
         Skill skill = null;
         long temp;
         try (FileReader reader = new FileReader("Skill.txt")){

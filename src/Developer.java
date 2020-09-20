@@ -1,19 +1,22 @@
-import java.util.List;
+import java.util.Arrays;
 
 public class Developer {
     long id;
     String name;
-    List<Skill> skills;
-    Account account;
+    long[] skills;
+    long account;
 
-    Developer (long id, String name, List<Skill> skills, Account account ) {
+    Developer (long id, String name, long[] skills, long account ) {
         this.id = id;
         this.name = name;
         this.skills = skills;
         this.account = account;
     }
     public String toString(){
-
-        return id + "-" + name + "-" + skills + "-" + account;
+        String str = "";
+        for (long l : skills){
+            str += l + ",";
+        }
+        return id + "-" + name + "-" + str + "-" + account;
     }
 }

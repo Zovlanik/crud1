@@ -37,7 +37,7 @@ public class AccountRepository {
 
     }
 
-    Account getById(long id){
+    static Account getById(long id){
         Account account = null;
         long temp;
         try (FileReader reader = new FileReader("Account.txt")){

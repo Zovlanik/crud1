@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -24,5 +25,17 @@ public class Main {
 //        accRepo.create(acc);
 
 
+        // пробуем создать девелопера
+        SkillRepository skillRepo = new SkillRepository();
+        List<Skill> listSkill = new ArrayList<>();
+
+        listSkill.add(skillRepo.getById(1L));
+        AccountRepository accRepo = new AccountRepository();
+
+        Developer dev = new Developer(2L,"Сергеев Сергей Сергеевич", new long[]{2L,3L,4L},4L);
+
+        DeveloperRepository devRepo = new DeveloperRepository();
+        devRepo.create(dev);
+        System.out.println(devRepo.getAll());
     }
 }
