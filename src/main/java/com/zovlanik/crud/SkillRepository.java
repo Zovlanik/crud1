@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkillRepository {
+    private static final String FILE_PATH = "src\\main\\resources\\";
+
     void create(Skill skillName){
         List <Skill> ls = getAll();
         long size = ls.size();
-        try (FileWriter writer = new FileWriter("src\\main\\resources\\Skill.txt",true)){
+        try (FileWriter writer = new FileWriter(FILE_PATH + "Skill.txt",true)){
             writer.write((size+1) + "," + skillName.name + "\n");
 
 
@@ -23,7 +25,7 @@ public class SkillRepository {
 
     void update (Skill skill){
         List<Skill> listSkill = getAll();
-        try (FileWriter writer = new FileWriter("src\\main\\resources\\Skill.txt")){
+        try (FileWriter writer = new FileWriter(FILE_PATH + "Skill.txt")){
             for(Skill sk : listSkill){
                 if(sk.id != skill.id) {
                     writer.write(sk.toString() + "\n");
@@ -42,7 +44,7 @@ public class SkillRepository {
     static Skill getById(Long id){
         Skill skill = null;
         long temp;
-        try (FileReader reader = new FileReader("src\\main\\resources\\Skill.txt")){
+        try (FileReader reader = new FileReader(FILE_PATH + "Skill.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
             while(line != null && line.length() > 1){
@@ -62,7 +64,7 @@ public class SkillRepository {
 
     List<Skill> getAll()  {
         List <Skill> ls = new ArrayList<>();
-        try (FileReader reader = new FileReader("src\\main\\resources\\Skill.txt")){
+        try (FileReader reader = new FileReader(FILE_PATH + "Skill.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
             while(line != null && line.length() > 1){
@@ -80,7 +82,7 @@ public class SkillRepository {
     void deleteById(Long id){
         List<Skill> listSkill = getAll();
 
-        try (FileWriter writer = new FileWriter("src\\main\\resources\\Skill.txt")){
+        try (FileWriter writer = new FileWriter(FILE_PATH + "Skill.txt")){
             for(Skill sk : listSkill){
                 if(sk.id != id) {
                     writer.write(sk.toString() + "\n");
