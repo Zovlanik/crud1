@@ -84,7 +84,7 @@ public class DeveloperRepository {
             while(line != null && line.length() > 1){
                 String[] tempStr = line.split("-");
                 String[] tempStrSkillsIdName = tempStr[2].replaceAll("[\\[\\] ]","").split(",");
-//                String[] tempStrSkillsID = tempStr[2].replaceAll("[\\[\\] ]","").split(",");
+
                 String[] tempStrSkillsID = new String[tempStrSkillsIdName.length / 2];
                 for(int i = 0; i < tempStrSkillsID.length; i++){
                     tempStrSkillsID[i] = tempStrSkillsIdName[i*2];
