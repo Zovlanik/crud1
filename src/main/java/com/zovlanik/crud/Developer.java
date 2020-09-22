@@ -1,24 +1,25 @@
 package main.java.com.zovlanik.crud;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Developer {
     long id;
     String name;
-    long[] skills;
-    long account;
+    Set<Skill> skills = new HashSet<>();
+    Account account;
 
     Developer (long id, String name, long[] skills, long account ) {
         this.id = id;
         this.name = name;
-        this.skills = skills;
-        this.account = account;
-    }
-    public String toString(){
-        String str = "";
-        for (long l : skills){
-            str += l + ",";
+        SkillRepository skRep = new SkillRepository();
+        for(long l : skills){
+            this.skills.add(skRep.getById(l));
         }
-        return id + "-" + name + "-" + str + "-" + account;
+        this.account = AccountRepository.getById(account);
+    }
+
+    public String toString(){
+        return id + "-" + name + "-" + skills + "-" + account;
     }
 }

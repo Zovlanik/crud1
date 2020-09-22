@@ -17,7 +17,7 @@ public class DeveloperRepository {
         List<Developer> ld = getAll();
         long size = ld.size();
         try (FileWriter writer = new FileWriter(FILE_PATH + "Developer.txt",true)){
-            writer.write((size+1) + "-" + developer.name + "-" + Arrays.toString(developer.skills) + "-" + developer.account + "\n");
+            writer.write((size+1) + "-" + developer.name + "-" + developer.skills + "-" + developer.account + "\n");
 
 
         } catch (IOException e) {
@@ -34,7 +34,7 @@ public class DeveloperRepository {
                     writer.write(dev.toString() + "\n");
 
                 } else {
-                    writer.write(developer.id + "-" + developer.name + "-" + Arrays.toString(developer.skills) + "-" + developer.account + "\n");
+                    writer.write(developer.id + "-" + developer.name + "-" + developer.skills + "-" + developer.account + "\n");
                 }
             }
 
@@ -83,10 +83,12 @@ public class DeveloperRepository {
             String line = buffReader.readLine();
             while(line != null && line.length() > 1){
                 String[] tempStr = line.split("-");
-
-
-
-                String[] tempStrSkillsID = tempStr[2].replaceAll("[\\[\\] ]","").split(",");
+                String[] tempStrSkillsIdName = tempStr[2].replaceAll("[\\[\\] ]","").split(",");
+//                String[] tempStrSkillsID = tempStr[2].replaceAll("[\\[\\] ]","").split(",");
+                String[] tempStrSkillsID = new String[tempStrSkillsIdName.length / 2];
+                for(int i = 0; i < tempStrSkillsID.length; i++){
+                    tempStrSkillsID[i] = tempStrSkillsIdName[i*2];
+                }
                 long[] listSkills = new long[tempStrSkillsID.length];
 
                 for(int i = 0; i < tempStrSkillsID.length; i++){
@@ -94,7 +96,7 @@ public class DeveloperRepository {
                     listSkills[i] = parseLong(tempStrSkillsID[i]);
                 }
 
-                Developer tempDeveloper = new Developer(parseLong(tempStr[0]),tempStr[1], listSkills, parseLong(tempStr[3]));
+                Developer tempDeveloper = new Developer(parseLong(tempStr[0]),tempStr[1], listSkills, parseLong(tempStr[3].substring(0,1)));
                 ld.add(tempDeveloper);
                 line = buffReader.readLine();
             }
