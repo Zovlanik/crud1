@@ -7,5 +7,7 @@
 7,Kotlin
 8,Go
 9,Абракадабра
-10,temp
+10,Абракадабура
 11,temp
+12,tempura
+13,tempura

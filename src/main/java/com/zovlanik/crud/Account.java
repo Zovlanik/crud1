@@ -1,3 +1,5 @@
+package main.java.com.zovlanik.crud;
+
 public class Account {
     long id;
     String data;

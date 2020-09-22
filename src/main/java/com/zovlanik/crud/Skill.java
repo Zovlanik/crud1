@@ -1,3 +1,5 @@
+package main.java.com.zovlanik.crud;
+
 class Skill {
     long id;
     String name;

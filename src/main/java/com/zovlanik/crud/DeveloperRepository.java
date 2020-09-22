@@ -1,3 +1,5 @@
+package main.java.com.zovlanik.crud;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,7 +14,7 @@ public class DeveloperRepository {
     void create(Developer developer){
         List<Developer> ld = getAll();
         long size = ld.size();
-        try (FileWriter writer = new FileWriter("Developer.txt",true)){
+        try (FileWriter writer = new FileWriter("src\\main\\resources\\Developer.txt",true)){
             writer.write((size+1) + "-" + developer.name + "-" + Arrays.toString(developer.skills) + "-" + developer.account + "\n");
 
 
@@ -24,7 +26,7 @@ public class DeveloperRepository {
 
     void update (Developer developer){
         List<Developer> listDeveloper = getAll();
-        try (FileWriter writer = new FileWriter("Developer.txt")){
+        try (FileWriter writer = new FileWriter("src\\main\\resources\\Developer.txt")){
             for(Developer dev : listDeveloper){
                 if(dev.id != developer.id) {
                     writer.write(dev.toString() + "\n");
@@ -43,7 +45,7 @@ public class DeveloperRepository {
     Developer getById(long id){
         Developer developer = null;
         long temp;
-        try (FileReader reader = new FileReader("Developer.txt")){
+        try (FileReader reader = new FileReader("src\\main\\resources\\Developer.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
             while(line != null && line.length() > 1){
@@ -74,7 +76,7 @@ public class DeveloperRepository {
 
     List<Developer> getAll()  {
         List <Developer> ld = new ArrayList<>();
-        try (FileReader reader = new FileReader("Developer.txt")){
+        try (FileReader reader = new FileReader("src\\main\\resources\\Developer.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
             while(line != null && line.length() > 1){
@@ -104,7 +106,7 @@ public class DeveloperRepository {
     void deleteById(Long id){
         List<Developer> ld = getAll();
 
-        try (FileWriter writer = new FileWriter("Account.txt")){
+        try (FileWriter writer = new FileWriter("src\\main\\resources\\Account.txt")){
             for(Developer dev : ld){
                 if(dev.id != id) {
                     writer.write(dev.toString() + "\n");
