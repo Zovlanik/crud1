@@ -55,11 +55,11 @@ public class SkillRepository {
         * Но я не знаю как лучше отсортировать стрим...
         *
         * */
-        List<Skill> listSkill2 = listSkill.stream().sorted((s, s1)-> (int) (s.getId()-s1.getId())).collect(Collectors.toList());
+        listSkill = listSkill.stream().sorted((s, s1)-> (int) (s.getId()-s1.getId())).collect(Collectors.toList());
 
         //Записываем весь наш список в файл:
         try (FileWriter writer = new FileWriter(FILE_PATH)){
-            for(Skill sk : listSkill2){
+            for(Skill sk : listSkill){
                     writer.write(sk.toString() + "\n");
             }
         } catch (IOException e) {
