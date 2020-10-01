@@ -1,0 +1,11 @@
+1,Java
+2,SQL
+3,Fireball
+4,Baldness
+5,Coding
+6,c#
+7,Kotlin
+8,Go
+9,Абракадабра
+10,Абракадабура
+11,temp

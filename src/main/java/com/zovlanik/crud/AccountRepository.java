@@ -1,4 +1,4 @@
-package main.java.com.zovlanik.crud;
+package com.zovlanik.crud;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +12,7 @@ public class AccountRepository {
     void create(Account account){
         List<Account> la = getAll();
         long size = la.size();
-        try (FileWriter writer = new FileWriter(FILE_PATH + "Account.txt",true)){
+        try (FileWriter writer = new FileWriter(FILE_PATH + "accounts.txt",true)){
             writer.write((size+1) + "," + account.data + "," + account.accountStatus + "\n");
 
 
@@ -24,7 +24,7 @@ public class AccountRepository {
 
     void update (Account account){
         List<Account> listAccount = getAll();
-        try (FileWriter writer = new FileWriter(FILE_PATH + "Account.txt")){
+        try (FileWriter writer = new FileWriter(FILE_PATH + "accounts.txt")){
             for(Account acc : listAccount){
                 if(acc.id != account.id) {
                     writer.write(acc.toString() + "\n");
@@ -43,7 +43,7 @@ public class AccountRepository {
     static Account getById(long id){
         Account account = null;
         long temp;
-        try (FileReader reader = new FileReader(FILE_PATH + "Account.txt")){
+        try (FileReader reader = new FileReader(FILE_PATH + "accounts.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
             while(line != null && line.length() > 1){
@@ -64,7 +64,7 @@ public class AccountRepository {
 
     List<Account> getAll()  {
         List <Account> ls = new ArrayList<>();
-        try (FileReader reader = new FileReader(FILE_PATH + "Account.txt")){
+        try (FileReader reader = new FileReader(FILE_PATH + "accounts.txt")){
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();
             while(line != null && line.length() > 1){
@@ -83,7 +83,7 @@ public class AccountRepository {
     void deleteById(Long id){
         List<Account> la = getAll();
 
-        try (FileWriter writer = new FileWriter(FILE_PATH + "Account.txt")){
+        try (FileWriter writer = new FileWriter(FILE_PATH + "accounts.txt")){
             for(Account acc : la){
                 if(acc.id != id) {
                     writer.write(acc.toString() + "\n");

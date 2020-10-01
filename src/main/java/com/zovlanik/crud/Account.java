@@ -1,4 +1,4 @@
-package main.java.com.zovlanik.crud;
+package com.zovlanik.crud;
 
 public class Account {
     long id;
@@ -17,6 +17,3 @@ public class Account {
     }
 }
 
-enum AccountStatus{
-    ACTIVE, BANNED, DELETED
-}
