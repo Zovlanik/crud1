@@ -1,6 +1,6 @@
 package com.zovlanik.crud;
 
-class Skill {
+public class Skill {
     private Long id;
     private String name;
 

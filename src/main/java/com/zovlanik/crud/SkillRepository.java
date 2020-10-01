@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SkillRepository {
     private static final String FILE_PATH = "src\\main\\resources\\skills.txt";
@@ -26,8 +27,13 @@ public class SkillRepository {
         * про findFirst понятно. В первом случае может вернуться десяток значений, если у нас совпадут их id. Но
         * у нас id уникальные должны быть. Да и в skillToUpdate не запишется больше одного элемента. Или запишется?
         *
+        * Собственно, вот и вся разница:
+        * Exception in thread "main" java.lang.ClassCastException: class java.util.stream.ReferencePipeline$2 cannot be
+        * cast to class com.zovlanik.crud.Skill (java.util.stream.ReferencePipeline$2 is in module java.base of
+        * loader 'bootstrap'; com.zovlanik.crud.Skill is in unnamed module of loader 'app')
+        *
         * */
-//        Skill skillToUpdate = (Skill)listSkill.stream().filter(s -> s.getId().equals(skill.getId()));
+//        Skill skillToUpdate = (Skill)listSkill.stream().filter(s -> s.getId().equals(skill.getId())); //ТАК НЕ ПОЛУЧИТСЯ
         Skill skillToUpdate = listSkill.stream().filter(s -> s.getId().equals(skill.getId())).findFirst().orElse(null);
 //        listSkill.remove(skillToUpdate);
 //        listSkill.add(skill);
@@ -43,9 +49,17 @@ public class SkillRepository {
         listSkill.add(skill);
 
 
+        /*
+        *
+        * Мне кажется, что здесь плохая сортировка, т.к. я превращаю лонг в int, что будет проблемой при больших числах
+        * Но я не знаю как лучше отсортировать стрим...
+        *
+        * */
+        List<Skill> listSkill2 = listSkill.stream().sorted((s, s1)-> (int) (s.getId()-s1.getId())).collect(Collectors.toList());
+
         //Записываем весь наш список в файл:
         try (FileWriter writer = new FileWriter(FILE_PATH)){
-            for(Skill sk : listSkill){
+            for(Skill sk : listSkill2){
                     writer.write(sk.toString() + "\n");
             }
         } catch (IOException e) {
