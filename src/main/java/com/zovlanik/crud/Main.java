@@ -5,7 +5,7 @@ public class Main {
         Skill sk = new Skill(5L, "Ледяной дождь");
         SkillRepository skillRepo = new SkillRepository();
         System.out.println(skillRepo.getAllInternal());
-        skillRepo.update(sk);
+        skillRepo.create(sk);
         System.out.println(skillRepo.getAllInternal());
     }
 }

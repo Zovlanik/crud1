@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SkillRepository {
-    private static final String FILE_PATH = "src\\main\\resources\\skills.txt";
+    private static final String FILE_PATH = "src\\main\\resources\\files\\skills.txt";
 
     void create(Skill skillName){
         try (FileWriter writer = new FileWriter(FILE_PATH,true)){
