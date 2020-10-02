@@ -1,4 +1,4 @@
-package com.zovlanik.crud;
+package com.zovlanik.crud.model;
 
 public class Skill {
     private Long id;
@@ -25,8 +25,4 @@ public class Skill {
         this.name = name;
     }
 
-    public String toString() {
-
-        return id + "," + name;
-    }
 }

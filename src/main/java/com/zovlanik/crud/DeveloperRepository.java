@@ -1,18 +1,20 @@
 package com.zovlanik.crud;
 
+import com.zovlanik.crud.model.Developer;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.Long.parseLong;
 
 public class DeveloperRepository {
     private static final String FILE_PATH = "src\\main\\resources\\files\\developers.txt";
-
+}
+/*
     void create(Developer developer){
         List<Developer> ld = getAll();
         long size = ld.size();
@@ -125,3 +127,4 @@ public class DeveloperRepository {
     }
 }
 
+*/

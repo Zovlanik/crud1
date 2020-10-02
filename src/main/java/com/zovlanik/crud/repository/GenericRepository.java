@@ -3,7 +3,7 @@ package com.zovlanik.crud.repository;
 import java.util.List;
 
 public interface GenericRepository<T, ID> {
-    T getByID(ID id);
+    T getById(ID id);
 
     List<T> getAll();
 
@@ -11,6 +11,6 @@ public interface GenericRepository<T, ID> {
 
     void update(T t);
 
-    void deleteByID(ID id);
+    void deleteById(ID id);
 
 }
