@@ -46,7 +46,8 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     @Override
     public void create(Skill skillName) {
         try (FileWriter writer = new FileWriter(FILE_PATH, true)) {
-            writer.write(generateNewId() + "," + skillName.getName() + "\n");
+            skillName.setId(generateNewId());
+            writer.write(convertSkillToString(skillName));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,7 +126,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         return new Skill(Long.parseLong(skillFromFile.substring(0, skillFromFile.indexOf(','))), skillFromFile.substring(skillFromFile.indexOf(',') + 1));
     }
 
-    private String convertSkillToString(Skill skill){
+    public String convertSkillToString(Skill skill){
         return skill.getId() + "," + skill.getName() + "\n";
     }
 }

@@ -96,7 +96,7 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
         return new Account(id, data, accountStatus);
     }
 
-    private String convertAccountToString(Account account){
+    public String convertAccountToString(Account account){
         return account.getId() + "," + account.getData() + "," + account.getAccountStatus() + "\n";
     }
 
