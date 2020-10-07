@@ -20,7 +20,8 @@ public class SkillView {
         boolean programON = true;
         do {
             System.out.println("Выберите, что хотите сделать:\n" +
-                    "1 = создать");
+                    "1 = создать\n" +
+                    "q = подняться на предыдущий уровень программы");
 
             UserChoice = scan.hasNext() ? scan.next().trim() : "ничего";
             switch (UserChoice) {
@@ -30,7 +31,7 @@ public class SkillView {
                     String skillName = "";
                     while (scan.hasNext()) {
                         skillName = scan.nextLine();
-                        if (skillName.length() > 1){
+                        if (skillName.length() > 0){
                             break;
                         }
                     }
