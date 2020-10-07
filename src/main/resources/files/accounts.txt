@@ -3,3 +3,5 @@
 3,Duke Nukem,ACTIVE
 4,Serious Sam,ACTIVE
 5,Некоторое название аккаунта,ACTIVE
+6,Bronks Tedd,ACTIVE
+7,Marv Telos,ACTIVE
