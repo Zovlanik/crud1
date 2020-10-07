@@ -3,7 +3,9 @@ package com.zovlanik.crud.repository.io;
 import com.zovlanik.crud.model.Account;
 import com.zovlanik.crud.model.Developer;
 import com.zovlanik.crud.model.Skill;
+import com.zovlanik.crud.repository.AccountRepository;
 import com.zovlanik.crud.repository.DeveloperRepository;
+import com.zovlanik.crud.repository.SkillRepository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 
 public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     private static final String FILE_PATH = "src\\main\\resources\\files\\developers.txt";
+    private final SkillRepository skillRepo = new JavaIOSkillRepositoryImpl();
+    private final AccountRepository accountRep = new JavaIOAccountRepositoryImpl();
 
     @Override
     public Developer getById(Long id) {
@@ -97,25 +101,28 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         // по списку айдишников получаем набор скиллов
         Set<Skill> skills = new HashSet<>();
         String[] tempSkillsFromDevelopersString = tempValues[2].replaceAll("^\\[|\\]$", "").split(",");
-        JavaIOSkillRepositoryImpl skillRepo = new JavaIOSkillRepositoryImpl();
+
         for (String str : tempSkillsFromDevelopersString) {
             skills.add(skillRepo.getById(Long.parseLong(str.trim())));
         }
         //по айдишнику получаем нужный нам аккаунт
-        JavaIOAccountRepositoryImpl accountRep = new JavaIOAccountRepositoryImpl();
+
         Account account = accountRep.getById(Long.parseLong(tempValues[3]));
         return new Developer(id, name, skills, account);
     }
 
     private String convertDeveloperToString(Developer developer) {
-        StringBuilder devString = new StringBuilder();
-        devString.append(developer.getId()).append("-");
-        devString.append(developer.getName()).append("-");
+        StringBuilder devString = new StringBuilder()
+                .append(developer.getId())
+                .append("-")
+                .append(developer.getName())
+                .append("-");
         Set<Skill> skills = developer.getSkills();
-        for(Skill skill : skills){
-            devString.append(skill.getId()).append(",");
+        for (Skill skill : skills) {
+            devString.append(skill.getId())
+                    .append(",");
         }
-        devString.setLength(devString.length()-1);
+        devString.setLength(devString.length() - 1);
         devString.append("-");
         Account acc = developer.getAccount();
         devString.append(acc.getId());
