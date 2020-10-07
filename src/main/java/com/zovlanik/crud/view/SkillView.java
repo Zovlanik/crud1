@@ -1,14 +1,16 @@
 package com.zovlanik.crud.view;
 
 
+import com.zovlanik.crud.controller.SkillController;
 import com.zovlanik.crud.model.Skill;
 import com.zovlanik.crud.repository.SkillRepository;
 import com.zovlanik.crud.repository.io.JavaIOSkillRepositoryImpl;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.Scanner;
 
 public class SkillView {
-    SkillRepository skillRepository = new JavaIOSkillRepositoryImpl();
+    SkillController skillController = new SkillController();
 
     public void preview(){
         System.out.println("Добро пожаловать в меню работы с сущностью Skill");
@@ -32,8 +34,12 @@ public class SkillView {
                             break;
                         }
                     }
-                    createSkill(skillName);
-                    System.out.println("Скилл создан");
+                    if (createSkill(skillName)) {
+                        System.out.println("Скилл создан");
+                    } else {
+                        System.out.println("Тут возникла ошибка");
+                    }
+
                     break;
                 case "2":
                     System.out.println("выбран 2 вариант");
@@ -51,15 +57,15 @@ public class SkillView {
     }
 
     private Skill getSkillById(Long id){
-        return skillRepository.getById(id);
+        return skillController.getById(id);
     }
 
     private void deleteSkillById(Long id){
 
     }
 
-    private void createSkill(String skillName){
-        skillRepository.create(new Skill(1L,skillName));
+    private boolean createSkill(String skillName){
+        return skillController.create(skillName);
     }
 
     private void updateSkill(){
