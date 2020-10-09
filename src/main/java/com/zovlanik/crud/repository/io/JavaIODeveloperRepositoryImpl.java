@@ -94,7 +94,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         }
     }
 
-    private Developer convertStringToDeveloper(String developerString) {
+    public Developer convertStringToDeveloper(String developerString) {
         String[] tempValues = developerString.split("-"); //парсим строку на составляющие
         Long id = Long.parseLong(tempValues[0]);//конвертируем айдишник в лонг
         String name = tempValues[1];//переписываем имя девелопера

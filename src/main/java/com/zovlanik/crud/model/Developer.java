@@ -4,10 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Developer {
-    Long id;
-    String name;
-    Set<Skill> skills = new HashSet<>();
-    Account account;
+    private Long id;
+    private String name;
+    private Set<Skill> skills = new HashSet<>();
+    private Account account;
 
     public Developer(Long id, String name, Set<Skill> skills, Account account) {
         this.id = id;

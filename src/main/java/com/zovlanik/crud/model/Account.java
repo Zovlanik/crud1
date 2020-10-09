@@ -1,9 +1,9 @@
 package com.zovlanik.crud.model;
 
 public class Account {
-    Long id;
-    String data;
-    AccountStatus accountStatus;
+    private Long id;
+    private String data;
+    private AccountStatus accountStatus;
 
     public Account(Long id, String data, AccountStatus accountStatus) {
         this.id = id;
