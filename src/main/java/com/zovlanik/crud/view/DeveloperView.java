@@ -19,6 +19,9 @@ public class DeveloperView {
         do {
             System.out.println("Выберите, что хотите сделать:\n" +
                     "1 = создать\n" +
+                    "2 = вывести на экран полный список Developers\n" +
+                    "3 = удалить Developer по ИД\n" +
+                    "4 = переименовать Developer по ИД\n" +
                     "q = подняться на предыдущий уровень программы");
 
             UserChoice = scan.hasNext() ? scan.next().trim() : "ничего";
@@ -61,9 +64,41 @@ public class DeveloperView {
                     break;
                 case "2":
                     System.out.println("выбран 2 вариант");
+                    showAllDevelopers();
                     break;
                 case "3":
-                    System.out.println("выбран 3 вариант");
+                    System.out.println("выбран 3 вариант: УДАЛИТЬ\n" +
+                            "Введите ИД сущности, которую нужно удалить (по одной за раз):");
+                    Long id = 0L;
+                    while (scan.hasNext()) {
+                        id = scan.nextLong();
+                        if (id > 0) {
+                            break;
+                        }
+                    }
+                    if (deleteDeveloperById(id)) {
+                        System.out.println("Developer с ИД = " + id + " удалён.");
+                    } else {
+                        System.out.println("Вы ввели неверный ИД.");
+                    }
+                    break;
+                case "4":
+                    System.out.println("выбран 4 вариант: ПЕРЕИМЕНОВАТЬ\n" +
+                            "Введите ИД сущности Developer и через запятую новое имя: ");
+                    Long idForRename = 0L;
+                    String NewDeveloperName = "";
+                    while (scan.hasNext()) {
+                        String tempStr = scan.nextLine();
+                        if (tempStr.length() > 0) {
+                            idForRename = Long.parseLong(tempStr.substring(0, tempStr.indexOf(",")));
+                            NewDeveloperName = tempStr.substring(tempStr.indexOf(",")+1).trim();
+                            break;
+                        }
+                    }
+                    updateDeveloper(idForRename, NewDeveloperName);
+
+                    System.out.println("Developer с ИД = " + idForRename + " переименован.\n" + "Новое имя: " + NewDeveloperName);
+
                     break;
                 default:
                     programON = false;
@@ -78,8 +113,8 @@ public class DeveloperView {
         return developerController.getById(id);
     }
 
-    private void deleteDeveloperById(Long id){
-
+    private boolean deleteDeveloperById(Long id){
+        return developerController.deleteById(id);
     }
 
     private boolean createDeveloper(String developerName, String skillsIdString, String accountIdString){
@@ -97,7 +132,12 @@ public class DeveloperView {
         return developerController.create(developerName, idSkills, idAccount);
     }
 
-    private void updateDeveloper(){
-
+    private void updateDeveloper(Long id, String NewDeveloperName){
+        Developer devToUpdate = developerController.getById(id);
+        devToUpdate.setName(NewDeveloperName);
+        developerController.updateDeveloperName(devToUpdate);
+    }
+    private void showAllDevelopers(){
+        developerController.showAll();
     }
 }
