@@ -2,6 +2,6 @@
 2,Freeman,ACTIVE
 3,Duke Nukem,ACTIVE
 4,Serious Sam,ACTIVE
-5,Некоторое название аккаунта,ACTIVE
+5,ФАнфурик,ACTIVE
 6,Bronks Tedd,ACTIVE
-7,Marv Telos,ACTIVE
+7,Marv Teloos,ACTIVE

@@ -7,6 +7,7 @@ import com.zovlanik.crud.repository.DeveloperRepository;
 import com.zovlanik.crud.repository.io.JavaIODeveloperRepositoryImpl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class DeveloperController {
@@ -37,5 +38,25 @@ public class DeveloperController {
 
     public Developer getById(Long id) {
         return developerRepository.getById(id);
+    }
+
+    public void showAll(){
+        List<Developer> developers = developerRepository.getAll();
+        JavaIODeveloperRepositoryImpl tempDevRepo = new JavaIODeveloperRepositoryImpl();
+        for(Developer dev : developers){
+//            developerRepository.convertDeveloperToString(dev);
+            System.out.println(dev.getId() + " " + dev.getName());
+        }
+    }
+
+    public boolean deleteById(Long id){
+        int tempSizeBefore = developerRepository.getAll().size();
+        developerRepository.deleteById(id);
+        int tempSizeAfter = developerRepository.getAll().size();
+        return tempSizeAfter < tempSizeBefore;
+    }
+
+    public void updateDeveloperName(Developer newDeveloper){
+        developerRepository.update(newDeveloper);
     }
 }

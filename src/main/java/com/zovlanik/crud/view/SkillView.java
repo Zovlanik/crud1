@@ -103,7 +103,7 @@ public class SkillView {
     }
 
     private void updateSkill(Long skillId, String NewSkillName) {
-        skillController.updateSkill(skillId, NewSkillName);
+        skillController.updateSkill(new Skill(skillId,NewSkillName));
     }
 
     private void showAllSkills() {

@@ -36,7 +36,7 @@ public class SkillController {
         return tempSizeAfter < tempSizeBefore;
     }
 
-    public void updateSkill(Long skillId, String NewSkillName){
-        skillRepository.update(new Skill(skillId,NewSkillName));
+    public void updateSkill(Skill skillToUpdate){
+        skillRepository.update(skillToUpdate);
     }
 }
