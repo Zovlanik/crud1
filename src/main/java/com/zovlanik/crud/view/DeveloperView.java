@@ -22,6 +22,7 @@ public class DeveloperView {
                     "2 = вывести на экран полный список Developers\n" +
                     "3 = удалить Developer по ИД\n" +
                     "4 = переименовать Developer по ИД\n" +
+                    "5 = получить сущность Developer по ИД\n" +
                     "q = подняться на предыдущий уровень программы");
 
             UserChoice = scan.hasNext() ? scan.next().trim() : "ничего";
@@ -100,6 +101,19 @@ public class DeveloperView {
                     System.out.println("Developer с ИД = " + idForRename + " переименован.\n" + "Новое имя: " + NewDeveloperName);
 
                     break;
+                case "5":
+                    System.out.println("выбран 5 вариант: \n" +
+                            "Введите ИД сущности Developer: ");
+                    Long developerId = 0L;
+                    while (scan.hasNext()) {
+                        developerId = scan.nextLong();
+                        if (developerId > 0) {
+                            break;
+                        }
+                    }
+                    System.out.println(getDeveloperById(developerId));
+
+                    break;
                 default:
                     programON = false;
 
@@ -109,8 +123,9 @@ public class DeveloperView {
         } while (programON);
     }
 
-    private Developer getDeveloperById(Long id){
-        return developerController.getById(id);
+    private String getDeveloperById(Long id){
+        Developer dev = developerController.getById(id);
+        return "ИД и имя Developer: \n" + dev.getId() + " " + dev.getName();
     }
 
     private boolean deleteDeveloperById(Long id){
