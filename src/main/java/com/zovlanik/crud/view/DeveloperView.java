@@ -22,7 +22,7 @@ public class DeveloperView {
                     "2 = вывести на экран полный список Developers\n" +
                     "3 = удалить Developer по ИД\n" +
                     "4 = переименовать Developer по ИД\n" +
-                    "5 = получить сущность Developer по ИД\n " +
+                    "5 = получить сущность Developer по ИД\n" +
                     "q = подняться на предыдущий уровень программы");
 
             UserChoice = scan.hasNext() ? scan.next().trim() : "ничего";
