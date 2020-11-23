@@ -5,13 +5,15 @@ import com.zovlanik.crud.model.Developer;
 import com.zovlanik.crud.model.Skill;
 import com.zovlanik.crud.repository.DeveloperRepository;
 import com.zovlanik.crud.repository.io.JavaIODeveloperRepositoryImpl;
+import com.zovlanik.crud.repository.io.csvIO.CsvIODeveloperRepositoryImpl;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class DeveloperController {
-    private final DeveloperRepository developerRepository = new JavaIODeveloperRepositoryImpl();
+//    private final DeveloperRepository developerRepository = new JavaIODeveloperRepositoryImpl();
+    private final DeveloperRepository developerRepository = new CsvIODeveloperRepositoryImpl();
     private final AccountController accController = new AccountController();
     private final SkillController skillController = new SkillController();
 
@@ -42,9 +44,8 @@ public class DeveloperController {
 
     public void showAll(){
         List<Developer> developers = developerRepository.getAll();
-        JavaIODeveloperRepositoryImpl tempDevRepo = new JavaIODeveloperRepositoryImpl();
+
         for(Developer dev : developers){
-//            developerRepository.convertDeveloperToString(dev);
             System.out.println(dev.getId() + " " + dev.getName());
         }
     }
