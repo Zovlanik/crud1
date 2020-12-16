@@ -3,14 +3,15 @@ package com.zovlanik.crud.controller;
 import com.zovlanik.crud.model.Account;
 import com.zovlanik.crud.model.AccountStatus;
 import com.zovlanik.crud.repository.AccountRepository;
-import com.zovlanik.crud.repository.io.JavaIOAccountRepositoryImpl;
+import com.zovlanik.crud.repository.io.SQLIO.SQLIOAccountRepositoryImpl;
 import com.zovlanik.crud.repository.io.csvIO.CsvIOAccountRepisitoryImpl;
 
 import java.util.List;
 
 public class AccountController {
 //    private final AccountRepository accountRepository= new JavaIOAccountRepositoryImpl();
-    private final AccountRepository accountRepository= new CsvIOAccountRepisitoryImpl();
+//    private final AccountRepository accountRepository= new CsvIOAccountRepisitoryImpl();
+    private final AccountRepository accountRepository= new SQLIOAccountRepositoryImpl();
 
     public boolean create(String accountName){
 

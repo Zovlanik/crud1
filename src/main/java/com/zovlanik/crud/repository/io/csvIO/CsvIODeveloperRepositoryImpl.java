@@ -4,16 +4,12 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 import com.zovlanik.crud.model.Account;
-import com.zovlanik.crud.model.AccountStatus;
 import com.zovlanik.crud.model.Developer;
 import com.zovlanik.crud.model.Skill;
 import com.zovlanik.crud.repository.AccountRepository;
 import com.zovlanik.crud.repository.DeveloperRepository;
 import com.zovlanik.crud.repository.SkillRepository;
-import com.zovlanik.crud.repository.io.JavaIOAccountRepositoryImpl;
-import com.zovlanik.crud.repository.io.JavaIOSkillRepositoryImpl;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class CsvIODeveloperRepositoryImpl implements DeveloperRepository {

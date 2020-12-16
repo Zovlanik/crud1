@@ -1,4 +1,4 @@
-package com.zovlanik.crud.repository.io;
+package com.zovlanik.crud.repository.io.javaIO;
 
 import com.zovlanik.crud.model.Skill;
 import com.zovlanik.crud.repository.SkillRepository;
