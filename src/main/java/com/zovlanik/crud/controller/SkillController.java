@@ -2,13 +2,13 @@ package com.zovlanik.crud.controller;
 
 import com.zovlanik.crud.model.Skill;
 import com.zovlanik.crud.repository.SkillRepository;
-import com.zovlanik.crud.repository.io.JavaIOSkillRepositoryImpl;
-import com.zovlanik.crud.repository.io.csvIO.CsvIOSkillRepositoryImpl;
+import com.zovlanik.crud.repository.io.SQLIO.SQLIOSkillRepositoryImpl;
+
 
 import java.util.List;
 
 public class SkillController {
-    private final SkillRepository skillRepository = new CsvIOSkillRepositoryImpl();
+    private final SkillRepository skillRepository = new SQLIOSkillRepositoryImpl();
 
     public boolean create(String skillName){
         //проверка на то, что длина имени нашего скилла больше двух букв

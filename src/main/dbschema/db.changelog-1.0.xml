@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    
+    <changeSet id="1.0.1 Creating account" author="zovlanik">
+        <createTable tableName="account">
+            <column name="ID" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+            <column name="id_account_status" type="int"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="1.0.2 Creating account_status" author="zovlanik">
+        <createTable tableName="account_status">
+            <column name="ID" type="int"  autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="status_name" type="varchar(100)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.3 Creating developer" author="zovlanik">
+        <createTable tableName="developer">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_account" type="int" />
+            <column name="name" type="varchar(200)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.4 Creating skills" author="zovlanik">
+        <createTable tableName="skills">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(200)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.5 Creating skills_developers" author="zovlanik">
+        <createTable tableName="skills_developers">
+            <column name="id_developer" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_skill" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.6 Update account" author="zovlanik">
+        <sql>
+            INSERT into account(name, id_account_status) VALUES ('First Test Name', 1);
+            INSERT into account(name, id_account_status) VALUES ('Second Test Name', 1);
+        </sql>
+    </changeSet>
+
+    <changeSet id="1.0.7 Update account_status" author="zovlanik">
+    <sql>
+    INSERT INTO account_status (status_name) VALUES ("ACTIVE");
+    INSERT INTO account_status (status_name) VALUES ("BANNED");
+    INSERT INTO account_status (status_name) VALUES ("DELETED");
+    </sql>
+    </changeSet>
+</databaseChangeLog>
+

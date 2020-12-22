@@ -4,8 +4,7 @@ import com.zovlanik.crud.model.Account;
 import com.zovlanik.crud.model.Developer;
 import com.zovlanik.crud.model.Skill;
 import com.zovlanik.crud.repository.DeveloperRepository;
-import com.zovlanik.crud.repository.io.JavaIODeveloperRepositoryImpl;
-import com.zovlanik.crud.repository.io.csvIO.CsvIODeveloperRepositoryImpl;
+import com.zovlanik.crud.repository.io.SQLIO.SQLIODeveloperRepositoryImpl;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +12,8 @@ import java.util.Set;
 
 public class DeveloperController {
 //    private final DeveloperRepository developerRepository = new JavaIODeveloperRepositoryImpl();
-    private final DeveloperRepository developerRepository = new CsvIODeveloperRepositoryImpl();
+//    private final DeveloperRepository developerRepository = new CsvIODeveloperRepositoryImpl();
+    private final DeveloperRepository developerRepository = new SQLIODeveloperRepositoryImpl();
     private final AccountController accController = new AccountController();
     private final SkillController skillController = new SkillController();
 
