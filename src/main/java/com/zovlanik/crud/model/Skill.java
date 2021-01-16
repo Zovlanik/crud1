@@ -1,13 +1,25 @@
 package com.zovlanik.crud.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="skills")
 public class Skill {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "name")
     private String name;
+
+    public Skill() {
+    }
 
     public Skill(Long id, String name) {
         this.id = id;
         this.name = name;
     }
+
 
     public Long getId() {
         return id;
