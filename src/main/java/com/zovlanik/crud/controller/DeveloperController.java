@@ -28,7 +28,8 @@ public class DeveloperController {
                     skills.add(skillController.getById(skillId));
                 }
                 Account account = accController.getById(idAccount);
-                developerRepository.create(new Developer(1L, developerName, skills, account));
+                Developer dev = new Developer(1L, developerName, skills, account);
+                developerRepository.create(dev);
                 return true;
             } catch (Exception ex){
                 System.out.println("Тут произошла ошибка с созданием сущности Developer. Но ничего страшного, попробуй ещё раз.");

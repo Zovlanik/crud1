@@ -14,7 +14,7 @@ public class HibernateIOSkillRepositoryImpl implements SkillRepository {
         Skill skill = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        skill = session.load(Skill.class, id);
+        skill = session.get(Skill.class, id);
         session.getTransaction().commit();
         return skill;
     }

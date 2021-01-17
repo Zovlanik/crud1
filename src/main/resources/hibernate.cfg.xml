@@ -11,6 +11,7 @@
      <property name="connection.password">root</property>
      <property name="hibernate.connection.characterEncoding">utf8</property>
       <property name="hibernate.current_session_context_class">thread</property>
+      <property name="hibernate.enable_lazy_load_no_trans">true</property>
       <mapping class="com.zovlanik.crud.model.Skill"/>
       <mapping class="com.zovlanik.crud.model.Account"/>
       <mapping class="com.zovlanik.crud.model.Developer"/>

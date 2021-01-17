@@ -15,7 +15,7 @@ public class HibernateIOAccountRepositoryImpl implements AccountRepository {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        account = session.load(Account.class, id);
+        account = session.get(Account.class, id);
         session.getTransaction().commit();
 
         return account;

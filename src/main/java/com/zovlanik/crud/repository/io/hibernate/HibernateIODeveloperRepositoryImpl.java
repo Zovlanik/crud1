@@ -19,7 +19,7 @@ public class HibernateIODeveloperRepositoryImpl implements DeveloperRepository {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        developer = session.load(Developer.class, id);
+        developer = session.get(Developer.class, id);
         session.getTransaction().commit();
 
 
