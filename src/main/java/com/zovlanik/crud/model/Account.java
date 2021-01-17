@@ -1,7 +1,5 @@
 package com.zovlanik.crud.model;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 
 @Entity

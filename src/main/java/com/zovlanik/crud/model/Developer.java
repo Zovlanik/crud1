@@ -20,7 +20,7 @@ public class Developer {
     private Set<Skill> skills = new HashSet<>();
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_account")
     private Account account;
 
     public Developer(Long id, String name, Set<Skill> skills, Account account) {
