@@ -3,14 +3,7 @@ package com.zovlanik.crud.repository.io.hibernate;
 import com.zovlanik.crud.model.Skill;
 import com.zovlanik.crud.repository.SkillRepository;
 import org.hibernate.Session;
-import org.hibernate.transform.Transformers;
 
-import javax.persistence.Query;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,10 +28,10 @@ public class HibernateIOSkillRepositoryImpl implements SkillRepository {
 
     //вернуть вообще все элементы
     List<Skill> getAllInternal() {
-        List<Skill> ls;
+        List<Skill> ls = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        ls = session.createSQLQuery("SELECT * FROM skills order by id").getResultList();
+        ls = session.createSQLQuery("SELECT * FROM skills order by id;").addEntity(Skill.class).getResultList();
 
         session.getTransaction().commit();
 

@@ -13,10 +13,9 @@ public class Account {
     private Long id;
     @Column(name = "name")
     private String data;
-    @Enumerated (EnumType.ORDINAL) //EnumType.ORDINAL означает, что перечисление будет передано в БД как Integer
-//    @Type(type = "com/zovlanik/crud/model/AccountStatus")
-    //OR
-//    @Column(name="id_account_status")
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "account_status")
     private AccountStatus accountStatus;
 
     public Account(Long id, String data, AccountStatus accountStatus) {

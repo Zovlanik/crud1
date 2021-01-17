@@ -19,8 +19,8 @@ public class Developer {
             inverseJoinColumns = @JoinColumn(name = "id_skill"))
     private Set<Skill> skills = new HashSet<>();
 
-    @Column(name = "id_account") //но это же у меня ENUM. не надо ли его здесь тоже указывать как и в
-    //классе Account?
+    @OneToOne
+    @JoinColumn(name = "id")
     private Account account;
 
     public Developer(Long id, String name, Set<Skill> skills, Account account) {
@@ -28,6 +28,10 @@ public class Developer {
         this.name = name;
         this.skills = skills;
         this.account = account;
+    }
+
+    public Developer() {
+
     }
 
     public Long getId() {

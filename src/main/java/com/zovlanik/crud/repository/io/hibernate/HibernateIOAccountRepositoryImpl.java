@@ -60,7 +60,7 @@ public class HibernateIOAccountRepositoryImpl implements AccountRepository {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        la = session.createSQLQuery("SELECT * FROM account order by id").getResultList();
+        la = session.createSQLQuery("SELECT * FROM account order by id;").addEntity(Account.class).getResultList();
         session.getTransaction().commit();
 
         return la;

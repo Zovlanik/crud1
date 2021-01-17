@@ -1,6 +1,7 @@
 package com.zovlanik.crud.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="skills")
@@ -11,6 +12,9 @@ public class Skill {
     private Long id;
     @Column(name = "name")
     private String name;
+    @ManyToMany(mappedBy = "skills")
+    private List<Developer> developers;
+
 
     public Skill() {
     }

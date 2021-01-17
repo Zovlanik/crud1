@@ -13,8 +13,7 @@
       <property name="hibernate.current_session_context_class">thread</property>
       <mapping class="com.zovlanik.crud.model.Skill"/>
       <mapping class="com.zovlanik.crud.model.Account"/>
-<!--      <mapping class="com.zovlanik.crud.model.Developer"/>-->
-<!--      <mapping class="com.zovlanik.crud.model.AccountStatus"/>-->
+      <mapping class="com.zovlanik.crud.model.Developer"/>
 
 <!--     <property name="default_schema">crud</property>-->
 
