@@ -22,18 +22,37 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>4.2.2</version>
+                <configuration>
+                    <propertyFile>src/main/dbschema/liquibase.properties</propertyFile>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>process-resources</phase>
-                        <configuration>
-                            <propertyFile>src/main/dbschema/liquibase.properties</propertyFile>
-                        </configuration>
+
                         <goals>
                             <goal>update</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.liquibase</groupId>-->
+<!--                <artifactId>liquibase-maven-plugin</artifactId>-->
+<!--                <version>4.2.2</version>-->
+<!--                <configuration>-->
+<!--                    <changeLogFile>src/main/dbschema/db.changelog-1.0.xml</changeLogFile>-->
+<!--                    <url>jdbc:mysql://localhost:3306/test</url>-->
+<!--                    <username>root</username>-->
+<!--                    <password>root</password>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>update</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
     <dependencies>
@@ -88,6 +107,12 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.27.Final</version>
         </dependency>
 
     </dependencies>

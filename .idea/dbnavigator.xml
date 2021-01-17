@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="2dad5aaf-b5d6-48d2-9915-43eee3cd9d32">
-        <schema name="crud" object-types="function, procedure, index, constraint, view, table, column, dataset trigger" />
+        <schema name="crud" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
@@ -35,9 +35,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="2dad5aaf-b5d6-48d2-9915-43eee3cd9d32" object-ref="schemas/crud/tables/account_status" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="2dad5aaf-b5d6-48d2-9915-43eee3cd9d32" />
@@ -90,7 +88,7 @@
           <database value="test" />
           <type value="USER_PASSWORD" />
           <user value="root" />
-          <deprecated-pwd value="MXFhemAyd3N4" />
+          <deprecated-pwd value="cm9vdA==" />
         </database>
         <properties>
           <auto-commit value="false" />

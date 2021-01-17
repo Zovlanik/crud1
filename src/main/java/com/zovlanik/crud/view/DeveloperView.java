@@ -149,7 +149,7 @@ public class DeveloperView {
 
     private void updateDeveloper(Long id, String NewDeveloperName){
         Developer devToUpdate = developerController.getById(id);
-        devToUpdate.setName(NewDeveloperName);
+        devToUpdate.setName(NewDeveloperName.trim());
         developerController.updateDeveloperName(devToUpdate);
     }
     private void showAllDevelopers(){

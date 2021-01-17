@@ -5,13 +5,15 @@ import com.zovlanik.crud.model.AccountStatus;
 import com.zovlanik.crud.repository.AccountRepository;
 import com.zovlanik.crud.repository.io.SQLIO.SQLIOAccountRepositoryImpl;
 import com.zovlanik.crud.repository.io.csvIO.CsvIOAccountRepisitoryImpl;
+import com.zovlanik.crud.repository.io.hibernate.HibernateIOAccountRepositoryImpl;
 
 import java.util.List;
 
 public class AccountController {
 //    private final AccountRepository accountRepository= new JavaIOAccountRepositoryImpl();
 //    private final AccountRepository accountRepository= new CsvIOAccountRepisitoryImpl();
-    private final AccountRepository accountRepository= new SQLIOAccountRepositoryImpl();
+//    private final AccountRepository accountRepository= new SQLIOAccountRepositoryImpl();
+    private final AccountRepository accountRepository= new HibernateIOAccountRepositoryImpl();
 
     public boolean create(String accountName){
 
